@@ -186,6 +186,9 @@ if [ -n \"$TEST_RUNNER_REPOS\" ]; then
 fi
 yum -y install epel-release
 
+# WORKAROUND newer django in epel
+yum install -y python2-simplejson
+yum --disablerepo=epel install -y python2-django
 if ! $PROXY yum -y install \$CMIT python-mock; then
     $PROXY yum clean all
     $PROXY yum -y install \$CMIT python-mock

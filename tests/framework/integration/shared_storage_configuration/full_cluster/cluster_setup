@@ -58,6 +58,9 @@ mv /tmp/chroma_support.repo /etc/yum.repos.d/
 # 'duck-like' replacement for fence -agents since cman depends on
 # fence-agents
 yum -y install expect cman
+# WORKAROUND newer django in epel
+yum install -y python2-simplejson
+yum --disablerepo=epel install -y python2-django
 # Install from the installation package
 cd /tmp
 yum -y install \$(ls $ARCHIVE_NAME)
